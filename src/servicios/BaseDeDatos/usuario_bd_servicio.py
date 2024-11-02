@@ -10,8 +10,6 @@ from modelos.usuario import Usuario
 import psycopg2
 import secret_config
 
-from controladores.aunteticacion_controlador import hash_contrasena
-
 class ErrorNotFound( Exception ):
     """ Excepcion que indica que una row buscada no fue encontrada"""
     pass
@@ -134,6 +132,7 @@ def actualizarPuntos( numero_documento, tipo_documento, cantidad_puntos ):
 
 def actualizarContrasena(email, nueva_contrasena):
     """ Actualiza la contraseña del usuario en la base de datos usando su correo electrónico """
+    from controladores.aunteticacion_controlador import hash_contrasena
     
     cursor = obtenerCursor()
     try:
